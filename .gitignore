@@ -1,0 +1,54 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+out/
+build/
+*.asar
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Electron specific
+*.exe
+*.app
+*.apk
+*.ipa
+*.pdb
+*.ilk
+*.obj
+*.exe.stackdump
+
+# Compiled source #
+###################
+*.class
+*.pyc
+*.pyo
+*.pyd
+*.o
+*.so
+
+# Other
+coverage/
+*.tgz
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
