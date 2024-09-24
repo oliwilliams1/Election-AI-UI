@@ -1,53 +1,61 @@
 body {
+    overflow-x: hidden;
     background-color: rgb(32, 28, 28);
-    padding: 0px;
+    padding: 0;
+    margin: 0; /* Remove default margin to avoid overflow */
 }
 
 .chat-container {
-    left: 0px;
-    top: 0px;
+    overflow-x: hidden;
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end; /* Align messages to the bottom */
+    align-items: stretch; /* Stretch to fill the width */
     width: 100vw;
-    height: calc(100vh - 8rem);
+    min-height: calc(100vh - 8rem);
     background-color: rgb(136, 205, 90);
 }
 
 .message-container {
+    overflow-x: hidden;
     left: 0px;
     bottom: 0px;
     width: 100vw;
-    position: absolute;
+    position: fixed;
     height: 8rem;
     background-color: slateblue;
     display: flex;
 }
 
 textarea {
-    width: calc(100vw - 2rem);
-    margin-left: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    overflow-x: hidden;
+    width: calc(100% - 2rem);
+    margin: 1rem; /* Use 1rem for uniform spacing */
     border-radius: 4px;
     border: none;
+    padding: 0.5rem; /* Add padding for better input */
+    resize: none; /* Prevent resizing */
 }
 
-.send-button {
-    width: 2rem;
-    height: 4rem;
-    margin: auto;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 9999px;
-    cursor: pointer;
+.message {
+    overflow-x: hidden;
+    max-width: 70%; /* Limit the width of messages */
+    padding: 0.5rem 1rem; /* Add padding for message readability */
+    border-radius: 1rem;
+    margin: 0.5rem 1rem; /* Adjust margin for vertical space */
+    word-wrap: break-word; /* Wrap long words */
 }
 
-.send-button:hover {
-    background-color: #0056b3;
+.user {
+    overflow-x: hidden;
+    background-color: coral;
+    border-bottom-right-radius: 0; /* Round the left side */
+}
+
+.bot {
+    overflow-x: hidden;
+    background-color: lightblue; /* Change bot message color */
+    border-bottom-left-radius: 0; /* Round the right side */
+    margin-right: auto; /* Align bot messages to the left */
 }
