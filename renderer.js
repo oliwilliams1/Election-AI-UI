@@ -6,12 +6,13 @@ let messages = [];
 function renderMessages() {
     const AI_UI = document.getElementById('AI-UI');
     AI_UI.innerHTML = messages.map((message, i) => {
-        return `<div class="message ${i % 2 === 0 ? 'user' : 'bot'}">${message.text}</div>`;
+        return `<div class="message ${i % 2 === 0 ? 'user' : 'bot'}">${message.text.replace(/\n/g, '<br>')}</div><br>`;
     }).join(''); // Join the array into a single string
 }
 
 function onEnterPress() {
-    messages.push({"text": inputField.value});
+    const userInput = inputField.value.replace(/\n/g, '<br>'); // Replace new lines with <br>
+    messages.push({"text": userInput});
     console.log("Enter key pressed!");
     inputField.value = "";
 
@@ -34,7 +35,7 @@ function onEnterPress() {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        let message = data["candidates"][0]["content"]["parts"][0]["text"];
+        let message = data["candidates"][0]["content"]["parts"][0]["text"].replace(/\n/g, '<br>'); // Replace new lines with <br>
         console.log(message);
         messages.push({'text': `${message}`});
         

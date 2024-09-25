@@ -40,10 +40,12 @@ textarea {
 
 .message {
     overflow-x: hidden;
-    max-width: 70%; /* Limit the width of messages */
+    max-width: 100%; /* Limit the width of messages */
+    width: min-content;
     padding: 0.5rem 1rem; /* Add padding for message readability */
     border-radius: 1rem;
-    margin: 0.5rem 1rem; /* Adjust margin for vertical space */
+    margin-left: 1rem;
+    margin-right: 1rem;
     word-wrap: break-word; /* Wrap long words */
 }
 
@@ -51,11 +53,12 @@ textarea {
     overflow-x: hidden;
     background-color: coral;
     border-bottom-right-radius: 0; /* Round the left side */
+    margin-left: auto;
 }
 
 .bot {
+    width: calc(100% - 4rem);
     overflow-x: hidden;
     background-color: lightblue; /* Change bot message color */
     border-bottom-left-radius: 0; /* Round the right side */
-    margin-right: auto; /* Align bot messages to the left */
 }

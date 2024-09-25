@@ -4,7 +4,9 @@ function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 500,
         height: 800,
-        //frame: false,
+        x: 1350,
+        y: 150,
+        frame: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,

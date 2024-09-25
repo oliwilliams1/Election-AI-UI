@@ -22,6 +22,7 @@
     "electron": "^32.1.2"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "showdown": "^2.1.0"
   }
 }
