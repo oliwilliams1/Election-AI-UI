@@ -1,3 +1,6 @@
+var showdown  = require('showdown'),
+converter = new showdown.Converter();
+
 const inputField = document.getElementById('entry-box');
 const API_KEY = "AIzaSyB-8_m7kiuNGgfNs_lns0ILwrrERfqfhjM";
 
@@ -6,7 +9,7 @@ let messages = [];
 function renderMessages() {
     const AI_UI = document.getElementById('AI-UI');
     AI_UI.innerHTML = messages.map((message, i) => {
-        return `<div class="message ${i % 2 === 0 ? 'user' : 'bot'}">${message.text.replace(/\n/g, '<br>')}</div><br>`;
+        return `<div class="message ${i % 2 === 0 ? 'user' : 'bot'}">${converter.makeHtml(message.text)}</div><br>`;
     }).join(''); // Join the array into a single string
 }
 
