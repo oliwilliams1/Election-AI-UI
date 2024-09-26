@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
+    "highlight.js": "^11.10.0",
+    "markdown-it": "^14.1.0",
     "showdown": "^2.1.0"
   }
 }

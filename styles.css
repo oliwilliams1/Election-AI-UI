@@ -7,9 +7,6 @@ body {
     height: 100vh;
     background-color: #181818;
 }
-p {
-    color: white;
-}
 
 .header {
     background-color: #242424;
@@ -40,6 +37,8 @@ p {
 }
 
 .message-container {
+    color: white;
+    text-wrap: wrap;
     background-color: #181818;
     padding: 1rem;
     display: flex;
@@ -47,6 +46,7 @@ p {
 }
 
 textarea {
+    color: white;
     height: 4rem;
     width: calc(100% - 1rem);
     border-radius: 4px;
@@ -59,10 +59,11 @@ textarea {
 }
 
 .message {
+    color: white;
     overflow-x: hidden;
     max-width: 80%;
     width: fit-content;
-    padding: 0rem 1rem;
+    padding: 0.25rem 1rem;
     border-radius: 1rem;
     margin-left: 0.25rem;
     margin-right: 0.25rem;
