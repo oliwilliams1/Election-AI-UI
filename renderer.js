@@ -13,6 +13,24 @@ function renderMessages() {
     }).join(''); // Join the array into a single string
 }
 
+messages.push({"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."});
+messages.push({"text": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."});
+messages.push({"text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."});
+messages.push({"text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."});
+messages.push({"text": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."});
+messages.push({"text": "Once upon a time, in a land far away, there lived a curious dragon named Zephyr. 🐉"});
+messages.push({"text": "Zephyr loved to explore the skies and often soared through the clouds."});
+messages.push({"text": "One day, he discovered a hidden valley filled with sparkling crystals."});
+messages.push({"text": "The valley was home to magical creatures who welcomed him with open arms."});
+messages.push({"text": "Together, they embarked on adventures, uncovering the secrets of the valley."});
+messages.push({"text": "In the end, Zephyr realized that friendship was the greatest treasure of all."});
+messages.push({"text": "Praesent commodo cursus magna, vel scelerisque nisl consectetur et."});
+messages.push({"text": "Curabitur blandit tempus porttitor."});
+messages.push({"text": "Donec ullamcorper nulla non metus auctor fringilla."});
+messages.push({"text": "Vestibulum id ligula porta felis euismod semper."});
+messages.push({"text": "Aenean lacinia bibendum nulla sed consectetur."});
+renderMessages();
+
 function onEnterPress() {
     const userInput = inputField.value.replace(/\n/g, '<br>'); // Replace new lines with <br>
     messages.push({"text": userInput});
