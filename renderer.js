@@ -14,21 +14,36 @@ const md = markdownit({
     }
   });
 const inputField = document.getElementById('entry-box');
-const API_KEY = "AIzaSyB-8_m7kiuNGgfNs_lns0ILwrrERfqfhjM";
+const API_KEY = "AIzaSyAjtbqg0T4aTbqDnJPl8kIlRH9ZYr6v32g";
 
 let messages = [];
+
+const clearButton = document.getElementById('close-button');
+clearButton.addEventListener('click', () => {
+    messages = [];
+    renderMessages();
+})
+const sendButton = document.getElementById('send-button');
+sendButton.addEventListener('click', onEnterPress);
+
+function renderText(text) {
+    const str = md.render(text);
+    return str;
+}
 
 function renderMessages() {
     const AI_UI = document.getElementById('AI-UI');
     AI_UI.innerHTML = messages.map((message, i) => {
-        const str = md.render(message.text);
-        return `<div class="message ${i % 2 === 0 ? 'user' : 'bot'}">${str}</div><br>`;
+        return `<div class="message ${i % 2 === 0 ? 'user' : 'bot'}">${renderText(message.text)}</div><br>`;
     }).join(''); // Join the array into a single string
 }
 
 renderMessages();
 
 function onEnterPress() {
+    if (messages.length % 2 != 0) {
+        return;
+    }
     const userInput = inputField.value;
     messages.push({"text": userInput});
     console.log("Enter key pressed!");
