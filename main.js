@@ -21,6 +21,7 @@ function createWindow() {
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
+    mainWindow.hide();
 }
 
 function createTray() {

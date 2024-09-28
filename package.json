@@ -1,9 +1,9 @@
 {
-  "name": "my-electron-app",
+  "name": "snout-ai-ui",
   "version": "1.0.0",
-  "description": "Hello World!",
+  "description": "A UI chatbot controlled by keybinds",
   "main": "main.js",
-  "author": "Jane Doe",
+  "author": "snout.ai",
   "license": "MIT",
   "scripts": {
     "start": "electron-forge start",
