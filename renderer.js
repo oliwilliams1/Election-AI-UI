@@ -1,18 +1,6 @@
 const hljs = require('highlight.js');
 const markdownit = require('markdown-it');
-const md = markdownit({
-    highlight: function (str, lang) {
-      if (lang && hljs.getLanguage(lang)) {
-        try {
-          return '<pre><code class="hljs">' +
-                 hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-                 '</code></pre>';
-        } catch (__) {}
-      }
-  
-      return '<pre><code class="hljs">' + md.utils.escapeHtml(str) + '</code></pre>';
-    }
-  });
+const md = markdownit();
 const inputField = document.getElementById('entry-box');
 const API_KEY = "AIzaSyAjtbqg0T4aTbqDnJPl8kIlRH9ZYr6v32g";
 
@@ -27,7 +15,7 @@ const sendButton = document.getElementById('send-button');
 sendButton.addEventListener('click', onEnterPress);
 
 function renderText(text) {
-    const str = md.render(text);
+    str = md.render(text);
     return str;
 }
 
@@ -36,6 +24,7 @@ function renderMessages() {
     AI_UI.innerHTML = messages.map((message, i) => {
         return `<div class="message ${i % 2 === 0 ? 'user' : 'bot'}">${renderText(message.text)}</div><br>`;
     }).join(''); // Join the array into a single string
+    hljs.highlightAll();
 }
 
 renderMessages();
