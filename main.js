@@ -10,6 +10,7 @@ function createWindow() {
         height: 800,
         skipTaskbar: true,
         frame: false,
+        alwaysOnTop: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
