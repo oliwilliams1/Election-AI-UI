@@ -3,12 +3,21 @@ const markdownit = require('markdown-it');
 const md = markdownit();
 const inputField = document.getElementById('entry-box');
 const API_KEY = "AIzaSyAjtbqg0T4aTbqDnJPl8kIlRH9ZYr6v32g";
+const path = require('path');
+const fs = require('fs');
 
 let messages = [];
+
+const systemPrompt = fs.readFileSync(path.join(__dirname, 'systemPrompt.txt'), 'utf8');
+
+messages.push({"text": systemPrompt});
+messages.push({"text": "Got it! I will stick by your rules and remember everything you tell me."})
 
 const clearButton = document.getElementById('close-button');
 clearButton.addEventListener('click', () => {
     messages = [];
+    messages.push({"text": systemPrompt});
+    messages.push({"text": "Got it! I will stick by your rules and remember everything you tell me."})
     renderMessages();
 })
 const sendButton = document.getElementById('send-button');
@@ -55,9 +64,14 @@ function renderText(text) {
 function renderMessages() {
     const AI_UI = document.getElementById('AI-UI');
     AI_UI.innerHTML = messages.map((message, i) => {
-        return `<div class="message ${i % 2 === 0 ? 'user' : 'bot'}">${renderText(message.text)}</div><br>`;
+        if (i > 1) {
+            return `<div class="message ${i % 2 === 0 ? 'user' : 'bot'}">${renderText(message.text)}</div><br>`;
+        }
     }).join(''); // Join the array into a single string
     hljs.highlightAll();
+
+    // Scroll to the bottom of the message container
+    AI_UI.scrollTop = AI_UI.scrollHeight;
 }
 
 renderMessages();
