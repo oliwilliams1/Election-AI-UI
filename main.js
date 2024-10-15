@@ -7,10 +7,11 @@ let tray;
 function createWindow() {
     mainWindow = new BrowserWindow({
         width: 500,
-        height: 800,
+        height: 600,
         skipTaskbar: true,
         frame: false,
         alwaysOnTop: true,
+        opacity: 0.1,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,

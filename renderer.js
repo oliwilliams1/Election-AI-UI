@@ -14,9 +14,42 @@ clearButton.addEventListener('click', () => {
 const sendButton = document.getElementById('send-button');
 sendButton.addEventListener('click', onEnterPress);
 
+function stripMarkdown(input) {
+    let output = input;
+
+    // Remove headers (#) and replace with <br>
+    output = output.replace(/#{1,6}\s*/g, "<br>");
+
+    // Remove bold (**) and (__) formatting
+    output = output.replace(/\*\*(.*?)\*\*|__(.*?)__/g, "$1$2");
+
+    // Remove italic (*) and (_) formatting
+    output = output.replace(/\*(.*?)\*|_(.*?)_/g, "$1$2");
+
+    // Remove inline code (``) and replace with <br>
+    output = output.replace(/`(.*?)`/g, "$1");
+
+    // Remove links [text](url) and replace with <br>
+    output = output.replace(/\[.*?\]\(.*?\)/g, "<br>");
+
+    // Remove images ![alt](url) and replace with <br>
+    output = output.replace(/![.*?]\(.*?\)/g, "<br>");
+
+    // Remove blockquotes (>) and replace with <br>
+    output = output.replace(/^>\s*/gm, "<br>");
+
+    // Remove lists (*) and (-) and replace with <br>
+    output = output.replace(/^\s*[\*\-]\s*/gm, "<br>");
+
+    // Replace multiple new lines with a single <br>
+    output = output.replace(/(<br>\s*)+/g, "<br>");
+
+    return output.trim();
+}
+
 function renderText(text) {
-    str = md.render(text);
-    return str;
+    // return md.render(strippedText);
+    return stripMarkdown(text);
 }
 
 function renderMessages() {
