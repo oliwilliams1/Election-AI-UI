@@ -3,7 +3,7 @@ const path = require('path');
 
 let mainWindow;
 let tray;
-
+let opacity = 0.1;
 function createWindow() {
     mainWindow = new BrowserWindow({
         width: 500,
@@ -11,7 +11,7 @@ function createWindow() {
         skipTaskbar: true,
         frame: false,
         alwaysOnTop: true,
-        opacity: 0.1,
+        opacity: opacity,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -66,6 +66,14 @@ function createTray() {
     });
 }
 
+function min(a, b) {
+    return a < b ? a : b;
+}
+
+function max(a, b) {
+    return a > b ? a : b;
+}
+
 app.whenReady().then(() => {
     createWindow();
     createTray();
@@ -88,6 +96,20 @@ app.whenReady().then(() => {
             }
         }
     });
+
+    globalShortcut.register('Control+Shift+R', () => {
+        if (mainWindow) {
+            opacity = min(opacity + 0.025, 1.0);;
+            mainWindow.setOpacity(opacity);
+        }
+    })
+
+    globalShortcut.register('Control+Shift+F', () => {
+        if (mainWindow) {
+            opacity = min(opacity - 0.025, 1.0);;
+            mainWindow.setOpacity(opacity);
+        }
+    })
 });
 
 app.on('window-all-closed', () => {
